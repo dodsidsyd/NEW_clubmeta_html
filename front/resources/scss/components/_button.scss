@@ -1,0 +1,64 @@
+.btn-box {
+    display: flex;
+    flex-wrap: nowrap;
+
+    a,
+    button {
+    }
+    & > * + * {
+        margin-left: 0.8rem;
+    }
+    & + :is(.btn-box) {
+        margin-top: 0.8rem;
+    }
+}
+.btn-bottom-box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 6.4rem;
+    background-color: #f9f9f9;
+    padding: 0 1.6rem;
+    box-sizing: border-box;
+    z-index: 20;
+}
+
+.btn,
+.btn-default {
+    @include btn();
+}
+.btn-primary {
+    @include btn($bg: $main-color, $border: $main-color, $color: #fff);
+}
+.btn-flat {
+    @include btn($bg: #fff8f2);
+}
+.btn-ghost {
+    @include btn($bg: none);
+}
+
+.btn-back {
+    @include bg($src: '../images/btn/btn_back.svg', $po: center);
+    font-size: 0;
+}
+
+.btn-close {
+    @include bg($src: '../images/btn/btn_close.svg', $po: center);
+    font-size: 0;
+}
+
+.btn-search {
+    @include bg($src: '../images/btn/btn_search.svg', $po: center);
+    font-size: 0;
+}
+
+.btn-del {
+    @include imgBtn($src: '../images/btn/btn_ip_delete');
+}
+.btn-go {
+    @include bg($src: '../images/ico/ico_s_right.svg', $po: center);
+    width: 1.6rem;
+    height: 1.6rem;
+}

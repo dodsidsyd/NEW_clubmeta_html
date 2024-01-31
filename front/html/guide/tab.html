@@ -1,273 +1,240 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-        <meta name="HandheldFriendly" content="true" />
-        <meta name="format-detection" content="telephone=no" />
-        <title>레이아웃 | 클럽메타</title>
-        <link rel="stylesheet" href="../../resources/css/common.min.css" />
-        <script src="../../resources/js/lib/jquery-3.7.0.min.js"></script>
-        <script src="../../resources/js/lib/jquery-ui.min.js"></script>
-        <script src="../../resources/js/common.js"></script>
-    </head>
-    <body>
-        <div class="wrap">
-            <header class="header">
-                <div class="header-inner">
-                    <div class="header-left">
-                        <a href="#none" class="btn-back" role="button" title="뒤로가기">뒤로가기</a>
-                    </div>
-                    <div class="header-center">
-                        <h1 class="header-title">레이아웃</h1>
-                    </div>
-                    <div class="header-right"><a href="#none" class="btn-search" role="button" title="검색">돋보기</a></div>
-                </div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>가이드</title>
+<style type="text/css">
+	 .guideContainer{position:relative;margin:30px 20px;}
+	 .guideContainer h1{margin-bottom:50px;font-size:34px;border-bottom:2px solid #000;padding-bottom:3px;}
+	 .guideContainer h2 {margin-bottom:25px; font-size:26px;}	
+	 .guideContainer h3 {margin-bottom:16px; font-size:18px;}	
+	 code{font:inherit;overflow:auto;display:block;margin:25px 0 90px;padding:20px;border:2px solid #ccc;background:#f7f7f7}
+	 pre{margin:0;padding:0;color:#111;font:inherit;font-size:15px;line-height:1.5}
+	 .swiper {width: 500px; height: 500px;}
+	 .swiper-slide {background:red;}
+	 .swiper-slide.swiper-slide-active {background:blue;}
+ </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+	// $(function () {
+	// 	const $elements = $.find('*[data-html-include]');
+	// 	if ($elements.length) {
+	// 		ui.include(function () {
+	// 			ui.init();
+	// 		});
+	// 	} else {
+	// 		ui.init();
+	//	}
+	//});
+	const ui = {
+		init() {
+			let self = this;
 
-                <!-- <a href="#none" class="btn-close" role="button">닫기</a> -->
-                <!-- <div class="input-box small">
-                    <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                    <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                </div> -->
-            </header>
-            <div class="contents">
-                <div class="section">
-                    <div class="inner">
-                        <h1>레이아웃</h1>
-                        <div class="tab-wrap">
-                            <div class="tab-items">
-                                <ul>
-                                    <li class="on">
-                                        <!-- <button type="button" class="tab-button" aria-label="tab1" data-target="#tab1">tab1</button> -->
-                                        <a href="#tab1" class="tab-button" role="button" title="tab1">tab1</a>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab2" data-target="#tab2">tab2</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab3" data-target="#tab3">tab3</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab4" data-target="#tab4">tab4</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab5" data-target="#tab5">tab5</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6">tab6</button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="tab-content">
-                                <div id="tab1" class="tab-cont open">
-                                    탭 내용 입니다 1
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab2" class="tab-cont">
-                                    탭 내용 입니다 2
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab3" class="tab-cont">
-                                    탭 내용 입니다 3
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab4" class="tab-cont">
-                                    탭 내용 입니다 4
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab5" class="tab-cont">
-                                    탭 내용 입니다 5
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab6" class="tab-cont">
-                                    탭 내용 입니다 6
-                                    <br />
-                                    <br />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-wrap line">
-                            <div class="tab-items">
-                                <ul>
-                                    <li class="on">
-                                        <button type="button" class="tab-button" aria-label="tab1" data-target="#tab1-1">tab1</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab2" data-target="#tab2-1">tab2</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab3" data-target="#tab3-1">tab3</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab4" data-target="#tab4-1">tab4</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab5" data-target="#tab5-1">tab5</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-1">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-1">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-1">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-1">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-1">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-1">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-1">tab6</button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="tab-content">
-                                <div id="tab1-1" class="tab-cont open">
-                                    탭 내용 입니다 1
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab2-1" class="tab-cont">
-                                    탭 내용 입니다 2
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab3-1" class="tab-cont">
-                                    탭 내용 입니다 3
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab4-1" class="tab-cont">
-                                    탭 내용 입니다 4
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab5-1" class="tab-cont">
-                                    탭 내용 입니다 5
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab6-1" class="tab-cont">
-                                    탭 내용 입니다 6
-                                    <br />
-                                    <br />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-wrap box">
-                            <div class="tab-items">
-                                <ul>
-                                    <li class="on">
-                                        <button type="button" class="tab-button" aria-label="tab1" data-target="#tab1-2">tab1</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab2" data-target="#tab2-2">tab2</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab3" data-target="#tab3-2">tab3</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab4" data-target="#tab4-2">tab4</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab5" data-target="#tab5-2">tab5</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-2">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-2">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-2">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-2">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-2">tab6</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="tab-button" aria-label="tab6" data-target="#tab6-2">tab6</button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="tab-content">
-                                <div id="tab1-2" class="tab-cont open">
-                                    탭 내용 입니다 1
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab2-2" class="tab-cont">
-                                    탭 내용 입니다 2
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab3-2" class="tab-cont">
-                                    탭 내용 입니다 3
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab4-2" class="tab-cont">
-                                    탭 내용 입니다 4
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab5-2" class="tab-cont">
-                                    탭 내용 입니다 5
-                                    <br />
-                                    <br />
-                                </div>
-                                <div id="tab6-2" class="tab-cont">
-                                    탭 내용 입니다 6
-                                    <br />
-                                    <br />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fnb-wrap">
-                <div class="nav">
-                    <ul>
-                        <li class="on"><a href="#none" role="button" class="btn-home">홈</a></li>
-                        <li><a href="#none" role="button" class="btn-klip">클립</a></li>
-                        <li><a href="#none" role="button" class="btn-shot">촬영</a></li>
-                        <li><a href="#none" role="button" class="btn-music">음악</a></li>
-                        <li><a href="#none" role="button" class="btn-user">마이</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </body>
+			self.swiper.init();
+		},
+		swiper: {
+			init(type) {
+				type = type || 'type_basic';
+				ui.swiper.createTypeMethod(type)();
+			},
+			// swiper 기본 옵션
+			default: function (slider) {
+				let self = this,
+					_default, _required;
+				
+				_default = {
+					slidesPerView: 'auto',
+					spaceBetween: 0,
+					speed: 600,
+					loop: false,
+					autoplay: false,
+					watchOverflow:true,
+					preloadImages: true,
+					loadOnTransitionStart:true,
+					observer: true,
+					observeParents: true,
+					observeSlideChildren: true,
+					watchSlidesVisibility: true,
+					noSwipingSelector: '.swiper-pagination.custom-html, .no-swipe',
+					lazy: {
+						loadPrevNext: true,
+						loadPrevNextAmount: 2,
+						loadOnTransitionStart: true,
+					},
+					on: {
+						destroy: function(){
+							slider.swiper = undefined;
+						}
+					}
+				};				
+				_required = {
+					pagination: function () {
+						let pagination = slider.querySelector('.swiper-pagination');
+
+						let paginationCustom = !!!pagination ? false : pagination.classList.contains('custom'), // default: Count
+							paginationCustomHTML = !!!pagination ? false : pagination.classList.contains('custom-html'), // option : HTML
+							paginationButtons = pagination.querySelectorAll('.swiper-page'),
+							paginationInit = true;
+					},
+					navigation: function () {
+						let next = slider.querySelector('.swiper-button-next'),
+							prev = slider.querySelector('.swiper-button-prev');
+
+						if (!!!(next && prev)) return;
+
+						return {
+							navigation: {
+								nextEl: next,
+								prevEl: prev,
+							}
+						}
+					},
+					autoplay: function () {
+						let autoplay = slider.dataset.slideAuto;
+						if (autoplay === undefined) return;
+
+						return {
+							autoplay: {
+								delay: 3000,
+								disableOnInteraction: false,
+							},
+						}
+					},
+					loop: function (slider) {
+						let loop = slider.dataset.slideLoop;
+						if (loop === undefined) return;
+
+						return {
+							loop: self._loopSettings(slider),
+						}
+					},
+				}
+			},
+			
+			// 옵션 loop 체크,
+			_loopSettings(el, limit) {
+				limit = (limit !== undefined && limit !== null) ? limit : slider.dataset.slideView != undefined ? Number(slider.dataset.slideView) : 1;
+				slider.dataset.slide == 'bn_type2' && (limit = 1);
+				return (slider.querySelectorAll('.swiper-slide').length <= limit) ? false : true;
+			},
+			_autoSettings(el) {			
+				var auto = el[0].dataset.auto === 'true' ? true : false;
+				return auto;
+			},
+			
+			createTypeMethod: function(type) {			
+
+				let self = this;
+
+				return function () {
+					let slider = $(`[data-slide="${type}"]`);
+					let options = self.default();
+					let typeOptions = self._setFunction[type](slider);
+					let mergedOptions = $.extend({}, options, typeOptions);
+
+					let swiper = new Swiper(`[data-slide="${type}"]`, mergedOptions);
+
+					console.log(slider)
+				}; 
+			},
+
+			_setFunction: {
+				type_basic: function(slider) {
+					let self = this;
+            		return {}
+				},
+				type_center: function (slider) {					
+					return {
+						slidesPerView: 'auto',
+						spaceBetween: 10,
+					};
+				},
+				type_effect: function (slider) {
+					return {
+						
+					};
+				},
+				type_custom: function (slider) {
+					return {
+					};
+				},				
+			},
+			
+		}
+	}
+
+	$(document).ready(() => {
+		ui.swiper.init();
+	});
+</script>
+</head>
+<body>
+<div class="guideContainer">      
+  	<h1>swiper 가이드</h1>
+	
+	<code>
+<pre>
+&lt;div class="swiper" data-slide=""&gt;	&lt;-- data-slide 로 swiper bind
+	&lt;div class="swiper-wrapper"&gt;  	&lt;-- 필수 class
+		&lt;div class="swiper-slide"&gt;	&lt;-- 필수 class
+
+		&lt;/div&gt;
+
+		&lt;-- 필요한 경우
+		&lt;div class="swiper-pagination"&gt;&lt;/div&gt;
+
+		&lt;-- 필요한 경우
+		&lt;-- 필요한 경우 navigation 감싸기
+		&lt;div class="navigation"&gt;
+			&lt;div class="swiper-button-prev"&gt;&lt;/div&gt;
+			&lt;div class="swiper-button-next"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;-- 필요한 경우
+		&lt;div class="swiper-scrollbar"&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+	</code>
+
+  	<h2>swiper (* CDN으로 불러와서 버전 안맞음)</h2>
+
+	<h3>1. 기본</h3>
+	<!-- Slider main container -->
+	<div class="swiper" data-slide="type_basic" data-slide-loop>
+		<!-- Additional required wrapper -->
+		<div class="swiper-wrapper">
+			<!-- Slides -->
+			<div class="swiper-slide">Slide 1</div>
+			<div class="swiper-slide">Slide 2</div>
+			<div class="swiper-slide">Slide 3</div>
+		</div>
+		<!-- If we need pagination -->
+		<div class="swiper-pagination"></div>
+	
+		<!-- If we need navigation buttons -->
+		<!-- case01 -->
+		<div class="navigation">
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+		<!-- case02 -->
+		<!-- <div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div> -->
+	
+		<!-- If we need scrollbar -->
+		<div class="swiper-scrollbar"></div>
+	</div>
+
+	<h3>2. pagination</h3>
+	<h3>3. navigation</h3>
+	<h3>4. autoPlay</h3>
+	<h3>5. loop</h3>
+</div>
+
+
+</body>
 </html>

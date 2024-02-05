@@ -73,8 +73,7 @@
 				let swiperContainers = document.querySelectorAll('[data-slide^="type_"]');
 				
 				swiperContainers.forEach((container) => {
-					// let slideType = container.dataset.slide.trim();
-					// console.log('Slide Type:', slideType);
+					let slideType = container.dataset.slide.trim();					
 					let loop = container.dataset.loop === 'true';
 					let auto = container.dataset.auto === 'true';
 					let paginationType = container.dataset.paginationType || 'bullets';
@@ -83,6 +82,20 @@
 					let autoHeight = container.dataset.autoHeight === 'true';
 
 					let additionalOptions = {};
+
+					switch (slideType) {
+					case 'type_basic':
+						break;
+					case 'type_center':
+						additionalOptions.centeredSlides = true;
+						break;
+					case 'type_height':
+						additionalOptions.autoHeight = true;
+						break;
+					// 다른 경우에 대한 추가적인 설정을 여기에 추가할 수 있습니다.
+					default:
+						break;
+					}
 
 					//  loop 옵션
 					if (loop) {
@@ -95,16 +108,6 @@
 							disableOnInteraction: false,
 						};
 					}
-
-					if (centeredSlides) {
-						additionalOptions.centeredSlides = true;
-						additionalOptions.spaceBetween = 10;
-					}
-
-					if (autoHeight) {
-						additionalOptions.autoHeight = true;
-					}
-
 					
 					let options = {
 						...this.defaultOptions,
@@ -197,7 +200,7 @@
 
 	<h3>3. autoHeight</h3>
 	<!-- Slider main container -->
-	<div class="swiper" data-slide="type_basic">
+	<div class="swiper" data-slide="type_height">
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
 			<!-- Slides -->
@@ -209,7 +212,7 @@
 	
 	<h3>4. loop</h3>
 	<!-- Slider main container -->
-	<div class="swiper" data-slide="type_basic">
+	<div class="swiper" data-slide="type_basic" data-slide-loop>
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
 			<!-- Slides -->
@@ -238,7 +241,7 @@
 
 	<h3>6. autoplay</h3>
 	<!-- Slider main container -->
-	<div class="swiper" data-slide="type_auto" data-loop="true">
+	<div class="swiper" data-slide="type_basic" data-loop="true" data-auto="true">
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
 			<!-- Slides -->

@@ -1,193 +1,156 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-        <meta name="HandheldFriendly" content="true" />
-        <meta name="format-detection" content="telephone=no" />
-        <title>팝업 | 클럽메타</title>
-        <link rel="stylesheet" href="../../resources/css/common.min.css" />
-        <script src="../../resources/js/lib/jquery-3.7.0.min.js"></script>
-        <script src="../../resources/js/lib/jquery-ui.min.js"></script>
-        <script src="../../resources/js/common.js"></script>
-    </head>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스타일 가이드</title>
+<link rel="stylesheet" href="/res_new/css/p_common.css" />
+<style type="text/css">
+   /* 가이드 css */
+    .guideContainer{position:relative;padding:30px 20px;}
+	.guideContainer h1{margin-bottom:50px;font-size:34px;border-bottom:2px solid #000;padding-bottom:3px;}
+	.guideContainer h2 {margin-bottom:25px; font-size:26px;}	
+	code{font:inherit;overflow:auto;display:block;margin:25px 0 50px;padding:20px;border:2px solid #ccc;background:#f7f7f7}
+	pre{margin:0;padding:0;color:#111;font:inherit;font-size:15px;line-height:1.5}
 
-    <body>
-        <div class="wrap">
-            <header class="header">
-                <div class="header-inner">
-                    <div class="header-left">
-                        <button class="btn-back" title="뒤로가기">뒤로가기</button>
-                    </div>
-                    <div class="header-center">
-                        <h1 class="header-title">팝업</h1>
-                        <!-- <div class="input-box">
-                            <input type="text" placeholder="전화번호 또는 이메일" />
-                        </div> -->
-                    </div>
-                    <div class="header-right">
-                        <button type="button" class="btn-search" title="검색">돋보기</button>
-                        <!-- <button type="button" class="btn-close" title="닫기">닫기</button> -->
-                    </div>
-                </div>
-            </header>
-            <div class="contents">
-                <div class="section">
-                    <div class="inner">
-                        <div class="title-box">
-                            <h1>팝업</h1>
-                        </div>
-                        <div class="btn-box">
-                            <button type="button" class="btn btn-primary" onclick="ui.popup.open('#msgBox')">메세지팝업</button>
-                            <button type="button" class="btn btn-primary" onclick="ui.popup.open('#msgBox2')">팝업</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="inner">
-                        <div class="title-box">
-                            <h1>팝업</h1>
-                        </div>
-                        <div class="btn-box">
-                            <button type="button" class="btn btn-primary" onclick="ui.popup.open('#sampleViewPop')">레이어팝업</button>
-                            <button type="button" class="btn btn-primary" onclick="ui.popup.open('#fullViewPop')">레이어팝업</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="inner">
-                        <div class="title-box">
-                            <h1>팝업</h1>
-                        </div>
-                        <div class="btn-box">
-                            <button type="button" class="btn btn-primary" onclick="ui.popup.toast('#toastPop')">토스트팝업</button>
-                            <button type="button" class="btn btn-primary" onclick="ui.popup.toast('#toastPop2')">토스트팝업</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="inner">
-                        <div class="title-box">
-                            <h1>팝업</h1>
-                        </div>
-                        <div class="btn-box">
-                            <button type="button" class="btn btn-primary" onclick="ui.popup.toast('#toastPop3')">토스트팝업</button>
-                            <button type="button" class="btn btn-primary" onclick="ui.popup.toast('#toastPop4')">토스트팝업</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fnb-wrap">
-                <div class="nav">
-                    <ul>
-                        <li class="on"><a href="#none" role="button" class="btn-home">홈</a></li>
-                        <li><a href="#none" role="button" class="btn-klip">클립</a></li>
-                        <li><a href="#none" role="button" class="btn-shot">촬영</a></li>
-                        <li><a href="#none" role="button" class="btn-music">음악</a></li>
-                        <li><a href="#none" role="button" class="btn-user">마이</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </body>
+	.myViewport {position:relative; width:300px; height:300px; margin:100px auto; background:red; animation:rotate 5s linear infinite;}
+	.myViewport.active {background:rgb(72, 17, 175);}
+	h3.sticky {position:sticky; top:0; left:0; background:#fff;}
+	h4 {position:sticky; top:19px; left:0; background:#fff;}
+	@keyframes rotate {
+		0%{
+			transform: rotate(0deg);
+		}
+		100%{
+			transform: rotate(360deg);
+		}
+	}
+	:root {
+		--main-color: #000;
+	}
+
+	[data-theme="dark"] {
+		--main-color: #fff;
+	}
+
+</style>
+<script type="text/javascript" src="/res_new/js/jquery-1.9.1.min.js"></script>
+<script type="text/jscript" src="/res_new/js/jquery-ui.min.js"></script>
+<script type="text/jscript" src="/res_new/js/common.js"></script>  
+</head>
+<body>
+<div class="guideContainer">      
+  	<h1>스크롤 감지 및 객체 감지 가이드</h1>  	
+  	<h2>observer - pc</h2>
+	<code>
+<pre>
+<strong style="font-size:26px">&lt;script&gt;</strong>
+
+<p>해당 소스 참조</p>
+</pre>
+	</code>	
+	<h3>sticky area</h3>
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<h4>sticky area2</h4>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+	<div class="myViewport">요기</div>
+</div>
+<script>
+	// 스크롤 감지 기본값
+	let options = {
+		root: null,
+		rootMargin: '0px',
+		threshold: 1.0,
+	}
+
+	let observerElems = document.querySelectorAll('.myViewport');
+
+	const io = new IntersectionObserver(function(entries, observer){
+		entries.forEach(function(entry){
+			if (entry.isIntersecting) {
+				// 감지했을 때 이벤트
+				entry.target.classList.add('active');
+			} else {
+				// 감지 후 영역 벗어낫을 경우 이벤트
+				entry.target.classList.remove('active');
+			}
+		});
+	}, options);
+
+	observerElems.forEach(function(el){
+		io.observe(el);
+	});
+		
+	// 스크롤 sticky
+	const header = document.querySelector('h3');
+	const headerH = header.getBoundingClientRect().height;
+	const headerText = 'sticky area';
+	
+	const headerStick = function(entries){
+		const [entry] = entries;
+
+		console.log(entry);
+		if (!entry.isIntersecting) {
+			header.classList.add('sticky');
+
+			temp = '<p> sticky </p>'
+			header.innerHTML = temp;
+		}
+		else {
+			header.classList.remove('sticky');
+			header.innerText = headerText;
+		} 
+	}
+
+	const headerObserver = new IntersectionObserver(headerStick, {
+		root: null,
+		threshold: 1.0,
+		 // root의 0% 만큼 header가 보이거나(isIntersecting: true) 사라지면(isIntersecting: false) callback function을 실행
+		rootMargin: `-${headerH}px`,
+		// 뷰포트에서 네비게이션 바 높이만큼 보이거나 남긴 시점을 콜백 메서드 호출시점으로 설정함
+	});
+
+	headerObserver.observe(header);
+	
+
+	// 객체 감지
+	// 1. 감지대상
+	const target = document.querySelector('h3');
+
+	// 2. 콜백
+	const callback = (mutationList, observer) => {
+  		console.log(mutationList);
+		  for(let mutation of mutationList) {
+			if (mutation.type === 'childList') {
+				console.log('A child node has been added or removed.');
+			}
+			else if (mutation.type === 'attributes') {
+				console.log('The ' + mutation.attributeName + ' attribute was modified.');
+			}
+		}
+	};
+
+	// 3. 생성
+	const observer = new MutationObserver(callback); // 타겟에 변화가 일어나면 콜백함수를 실행하게 된다.
+
+	// 4. 옵션
+	const config = { 
+		attributes: true, // 속성 변화 할때 감지
+		childList: true, // 자식노드 추가/제거 감지
+		characterData: true, // 데이터 변경전 내용 기록
+	};
+
+	// 5. 감지 시작
+	observer.observe(target, config);
+
+	// 6. 감지 중지
+	// observe.disconnect();
+</script>
+
+</body>
 </html>
-
-<!-- 팝업 -->
-<article class="layerpopup-box msg" id="msgBox" role="dialog">
-    <div class="layer-popup msg-box">
-        <div class="title-box">
-            <strong class="sub-title bold">test</strong>
-        </div>
-        <p class="msg">팝업 내용영역입니다</p>
-        <div class="btn-box">
-            <button type="button" class="btn btn-pop-close" title="레이어팝업 닫기">닫기</button>
-            <button type="button" class="btn btn-primary btn-pop-confirm" title="확인">확인</button>
-        </div>
-    </div>
-</article>
-
-<article class="layerpopup-box msg" id="msgBox2" role="dialog">
-    <div class="layer-popup msg-box">
-        <p class="msg">팝업 내용영역입니다</p>
-        <div class="btn-box">
-            <button type="button" class="btn btn-primary btn-pop-confirm" title="확인">확인</button>
-        </div>
-    </div>
-</article>
-
-<article class="layerpopup-box" id="sampleViewPop" role="dialog">
-    <div class="layer-popup">
-        <header class="layer-header">
-            <h1 class="pop-title">제목</h1>
-            <button type="button" class="btn-close" title="레이어팝업 닫기">닫기</button>
-        </header>
-
-        <div class="layer-content"></div>
-        <!-- //layer-content -->
-        <div class="btn-box">
-            <button type="button" class="btn btn-pop-close" title="레이어팝업 닫기">닫기</button>
-            <button type="button" class="btn-primary btn-pop-confirm" title="확인">확인</button>
-        </div>
-    </div>
-    <!-- //layer-popup -->
-</article>
-
-<article class="layerpopup-box full" id="fullViewPop" role="dialog">
-    <div class="layer-popup login">
-        <header class="layer-header">
-            <div class="header-inner">
-                <div class="header-left"></div>
-                <div class="header-center">
-                    <h1 class="pop-title">제목</h1>
-                    <!-- <div class="input-box">
-                        <input type="text" placeholder="전화번호 또는 이메일" />
-                    </div> -->
-                </div>
-                <div class="header-right">
-                    <button type="button" class="btn-close" title="레이어팝업 닫기">닫기</button>
-                </div>
-            </div>
-        </header>
-
-        <div class="layer-content"></div>
-        <!-- //layer-content -->
-        <div class="btn-box">
-            <button type="button" class="btn btn-pop-close" title="레이어팝업 닫기">닫기</button>
-            <button type="button" class="btn-primary btn-pop-confirm" title="확인">확인</button>
-        </div>
-    </div>
-    <!-- //layer-popup -->
-</article>
-
-<div class="toast-wrap top">
-    <article class="toastPop" id="toastPop" role="dialog">
-        <div class="toast-box">
-            <p class="toastMsg">토스트1</p>
-            <button type="button" class="btn-close">닫기</button>
-        </div>
-    </article>
-
-    <article class="toastPop" id="toastPop2" role="dialog">
-        <div class="toast-box">
-            <p class="toastMsg">토스트2</p>
-            <button type="button" class="btn-close">닫기</button>
-        </div>
-    </article>
-</div>
-<div class="toast-wrap bottom">
-    <article class="toastPop" id="toastPop3" role="dialog">
-        <div class="toast-box">
-            <p class="toastMsg">토스트1</p>
-            <button type="button" class="btn-close">닫기</button>
-        </div>
-    </article>
-
-    <article class="toastPop" id="toastPop4" role="dialog">
-        <div class="toast-box">
-            <p class="toastMsg">토스트2</p>
-            <button type="button" class="btn-close">닫기</button>
-        </div>
-    </article>
-</div>
-
-<!-- //팝업 -->

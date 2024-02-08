@@ -13,15 +13,14 @@
 	code{font:inherit;overflow:auto;display:block;margin:25px 0 90px;padding:20px;border:2px solid #ccc;background:#f7f7f7}
 	pre{margin:0;padding:0;color:#111;font:inherit;font-size:15px;line-height:1.5}
 	.swiper {width: 500px; height: 500px; margin-bottom:20px;}
-	.swiper-slide {background:#fff; border:1px solid #ddd; border-radius:14px; align-items:center; justify-content:center;}
-	.swiper-slide.swiper-slide-active {display:flex; background:#000; color:#fff;}
+	.swiper .swiper-slide {display:flex; border:1px solid #ddd; border-radius:14px; align-items:center; justify-content:center; background:#000; color:#fff;}
 	.custom_wrap {display:flex; position:absolute; bottom:0; left:0; width:100%; justify-content:center; align-items:center;}
 	.custom_wrap .swiper-pagination-bullets.swiper-pagination-horizontal,
 	.custom_wrap .swiper-pagination {position:static; width:auto; transform:none;}
 	.custom_ctl {position:relative; z-index:10; height:25px;}
 	.custom_ctl button {color:#fff;}
 	.swiper .swiper-pagination-bullet {background:#fff;}
- </style>
+</style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
@@ -38,7 +37,6 @@
 	const ui = {
 		init() {
 			let self = this;
-
 			self.swiper.init();
 		},
 		swiper: {
@@ -46,7 +44,7 @@
 			defaultOptions: {
 				slidesPerView: 'auto',
 				spaceBetween: 0,
-				speed: 600,
+				speed: 800,
 				loop: false,
 				autoplay: false,
 				watchOverflow:true,
@@ -56,6 +54,7 @@
 				observeParents: true,
 				observeSlideChildren: true,
 				watchSlidesVisibility: true,
+				touchEventsTarget: 'wrapper',
 				noSwipingSelector: '.swiper-pagination.custom-html, .no-swipe',
 				lazy: {
 					loadPrevNext: true,
@@ -64,48 +63,68 @@
 				},
 				on: {
 					destroy: function(){
-						slider.swiper = undefined;
+						container.swiper = undefined;
 					},
 				}
 			},
-
 			init() {
 				let swiperContainers = document.querySelectorAll('[data-slide^="type_"]');
 				
-				swiperContainers.forEach((container) => {
-					let slideType = container.dataset.slide.trim();					
-					let loop = container.dataset.loop === 'true';
-					let auto = container.dataset.auto === 'true';
+				swiperContainers.forEach((container, index) => {
+					let slideType = container.dataset.slide.trim();		
+					let loop = container.hasAttribute('data-loop');
+					let auto = container.hasAttribute('data-auto');
+					// let loop = container.dataset.loop === 'true';
+					// let auto = container.dataset.auto === 'true';
 					let paginationType = container.dataset.paginationType || 'bullets';
        				let navigationType = container.dataset.navigationType || 'buttons';
 					let centeredSlides = container.dataset.centeredSlides === 'true';
 					let autoHeight = container.dataset.autoHeight === 'true';
 
+					let autoControlButton = container.querySelector('.swiper-auto-ctl');
+
+					if (container.swiper && autoControlButton) {
+						autoControlButton.addEventListener('click', function() {
+							if (container.swiper && container.swiper.autoplay) {
+								if (container.swiper.autoplay.running) {
+									container.swiper.autoplay.stop();
+									autoControlButton.textContent = 'play';
+								} else {
+									container.swiper.autoplay.start();
+									autoControlButton.textContent = 'stop';
+								}
+							}
+						});
+					}
+					
 					let additionalOptions = {};
 
 					switch (slideType) {
-					case 'type_basic':
-						break;
-					case 'type_center':
-						additionalOptions.centeredSlides = true;
-						break;
-					case 'type_height':
-						additionalOptions.autoHeight = true;
-						break;
-					// 다른 경우에 대한 추가적인 설정을 여기에 추가할 수 있습니다.
-					default:
-						break;
+						case 'type_basic':
+							break;
+						case 'type_center':
+							additionalOptions.centeredSlides = true;
+							additionalOptions.spaceBetween = 20;
+							break;
+						case 'type_height':
+							additionalOptions.autoHeight = true;
+							break;
+						// 다른 경우에 대한 추가적인 설정을 여기에 추가할 수 있습니다.
+						default:
+							break;
 					}
 
 					//  loop 옵션
 					if (loop) {
 						additionalOptions.loop = true;
+						additionalOptions.loopedSlides = 1;
 					}
 
 					if (auto) {
 						additionalOptions.autoplay = {
 							delay: 3000,
 							disableOnInteraction: false,
+							pauseOnMouseEnter: true,
 						};
 					}
 					
@@ -117,6 +136,7 @@
 						pagination: {
 							el: container.querySelector('.swiper-pagination'),
 							type: paginationType,
+							clickable: true,
 						},
 						navigation: {
 							nextEl: container.querySelector('.swiper-button-next'),
@@ -127,20 +147,16 @@
 						...additionalOptions,												
 					};
 
-					new Swiper(container, options);
-
-					console.log('Options:', options);
-					console.log('Data Loop:', container.dataset.loop);
-					console.log('Data Auto:', container.dataset.auto);
-					console.log('Additional Options:', additionalOptions);
+					container.swiper = new Swiper(container, options);
 				});
 			},
-		},	
+		},
 	};
 
 	document.addEventListener('DOMContentLoaded', function () {
-		ui.swiper.init();
+		ui.swiper.init();		
 	});
+
 </script>
 </head>
 <body>
@@ -173,16 +189,15 @@
 	</code>
 
   	<h2>swiper (* CDN으로 불러와서 버전 안맞음)</h2>
-
 	<h3>1. 기본</h3>
 	<!-- Slider main container -->
 	<div class="swiper" data-slide="type_basic">
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
 			<!-- Slides -->
-			<div class="swiper-slide">Slide 1</div>
-			<div class="swiper-slide">Slide 2</div>
-			<div class="swiper-slide">Slide 3</div>
+			<div class="swiper-slide"><span>Slide 1</span></div>
+			<div class="swiper-slide"><span>Slide 2</span></div>
+			<div class="swiper-slide"><span>Slide 3</span></div>
 		</div>
 	</div>
 
@@ -191,10 +206,10 @@
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
 			<!-- Slides -->
-			<div class="swiper-slide" style="width: 250px;">Slide 1</div>
-			<div class="swiper-slide" style="width: 250px;">Slide 2</div>
-			<div class="swiper-slide" style="width: 250px;">Slide 3</div>
-			<div class="swiper-slide" style="width: 250px;">Slide 4</div>
+			<div class="swiper-slide" style="width: 250px;"><span>Slide 1</span></div>
+			<div class="swiper-slide" style="width: 250px;"><span>Slide 2</span></div>
+			<div class="swiper-slide" style="width: 250px;"><span>Slide 3</span></div>
+			<div class="swiper-slide" style="width: 250px;"><span>Slide 4</span></div>
 		</div>
 	</div>
 
@@ -204,21 +219,21 @@
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
 			<!-- Slides -->
-			<div class="swiper-slide">Slide 1</div>
-			<div class="swiper-slide">Slide 2</div>
-			<div class="swiper-slide">Slide 3</div>
+			<div class="swiper-slide"><span>Slide 1</span></div>
+			<div class="swiper-slide"><span>Slide 2</span></div>
+			<div class="swiper-slide"><span>Slide 3</span></div>
 		</div>
 	</div>
 	
 	<h3>4. loop</h3>
 	<!-- Slider main container -->
-	<div class="swiper" data-slide="type_basic" data-slide-loop>
+	<div class="swiper" data-slide="type_basic" data-loop>
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
 			<!-- Slides -->
-			<div class="swiper-slide">Slide 1</div>
-			<div class="swiper-slide">Slide 2</div>
-			<div class="swiper-slide">Slide 3</div>
+			<div class="swiper-slide"><span>Slide 1</span></div>
+			<div class="swiper-slide"><span>Slide 2</span></div>
+			<div class="swiper-slide"><span>Slide 3</span></div>
 		</div>
 	</div>
 
@@ -228,9 +243,9 @@
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
 			<!-- Slides -->
-			<div class="swiper-slide">Slide 1</div>
-			<div class="swiper-slide">Slide 2</div>
-			<div class="swiper-slide">Slide 3</div>
+			<div class="swiper-slide"><span>Slide 1</span></div>
+			<div class="swiper-slide"><span>Slide 2</span></div>
+			<div class="swiper-slide"><span>Slide 3</span></div>
 		</div>
 
 		<div class="navigation">
@@ -241,13 +256,13 @@
 
 	<h3>6. autoplay</h3>
 	<!-- Slider main container -->
-	<div class="swiper" data-slide="type_basic" data-loop="true" data-auto="true">
+	<div class="swiper" data-slide="type_basic" data-loop data-auto>
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
 			<!-- Slides -->
-			<div class="swiper-slide">Slide 1</div>
-			<div class="swiper-slide">Slide 2</div>
-			<div class="swiper-slide">Slide 3</div>
+			<div class="swiper-slide"><span>Slide 1</span></div>
+			<div class="swiper-slide"><span>Slide 2</span></div>
+			<div class="swiper-slide"><span>Slide 3</span></div>
 		</div>
 
 		<div class="custom_wrap">
@@ -258,29 +273,50 @@
 		</div>
 	</div>
 
-	<h3>6. pagination</h3>
-	<!-- Slider main container -->
-	<div class="swiper" data-slide="type_basic">
+	<div class="swiper" data-slide="type_basic" data-loop data-auto>
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
 			<!-- Slides -->
-			<div class="swiper-slide">Slide 1</div>
-			<div class="swiper-slide">Slide 2</div>
-			<div class="swiper-slide">Slide 3</div>
+			<div class="swiper-slide"><span>Slide 1</span></div>
+			<div class="swiper-slide"><span>Slide 2</span></div>
+			<div class="swiper-slide"><span>Slide 3</span></div>
+			<div class="swiper-slide"><span>Slide 4</span></div>
+			<div class="swiper-slide"><span>Slide 5</span></div>
+		</div>
+
+		<div class="custom_wrap">
+			<div class="swiper-pagination"></div>
+			<div class="custom_ctl">
+				<button type="button" class="swiper-auto-ctl" aria-label="슬라이드 자동롤링 중지">stop</button>
+			</div>
+		</div>
+	</div>
+
+	<h3>7. pagination</h3>
+	<!-- Slider main container -->
+	<div class="swiper" data-slide="type_basic" data-pagination-type="fraction">
+		<!-- Additional required wrapper -->
+		<div class="swiper-wrapper">
+			<!-- Slides -->
+			<div class="swiper-slide"><span>Slide 1</span></div>
+			<div class="swiper-slide"><span>Slide 2</span></div>
+			<div class="swiper-slide"><span>Slide 3</span></div>
 		</div>
 
 		<div class="swiper-pagination"></div>
 	</div>
 
-	<h3>7. 종합</h3>
+	<h3>8. 종합</h3>
 	<!-- Slider main container -->
-	<div class="swiper _auto" data-slide="type_basic" data-pagination-type="progressbar">
+	<div class="swiper _auto" data-slide="type_center" data-pagination-type="progressbar" data-auto>
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
 			<!-- Slides -->
-			<div class="swiper-slide">Slide 1</div>
-			<div class="swiper-slide">Slide 2</div>
-			<div class="swiper-slide">Slide 3</div>
+			<div class="swiper-slide" style="width: 250px;"><span>Slide 1</span></div>
+			<div class="swiper-slide" style="width: 250px;"><span>Slide 2</span></div>
+			<div class="swiper-slide" style="width: 250px;"><span>Slide 3</span></div>
+			<div class="swiper-slide" style="width: 250px;"><span>Slide 4</span></div>
+			<div class="swiper-slide" style="width: 250px;"><span>Slide 5</span></div>
 		</div>
 		<!-- If we need pagination -->
 		<div class="swiper-pagination"></div>

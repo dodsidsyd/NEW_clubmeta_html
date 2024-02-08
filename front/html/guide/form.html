@@ -1,383 +1,302 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-        <meta name="HandheldFriendly" content="true" />
-        <meta name="format-detection" content="telephone=no" />
-        <title>폼요소 | 클럽메타</title>
-        <link rel="stylesheet" href="../../resources/css/common.min.css" />
-        <script src="../../resources/js/lib/jquery-3.7.0.min.js"></script>
-        <script src="../../resources/js/lib/jquery-ui.min.js"></script>
-        <script src="../../resources/js/common.js"></script>
-    </head>
-    <body>
-        <div class="wrap">
-            <header class="header">
-                <div class="header-inner">
-                    <div class="header-left">
-                        <button class="btn-back" title="뒤로가기">뒤로가기</button>
-                    </div>
-                    <div class="header-center">
-                        <h1 class="header-title">폼요소</h1>
-                        <!-- <div class="input-box">
-                            <input type="text" placeholder="전화번호 또는 이메일" />
-                        </div> -->
-                    </div>
-                    <div class="header-right">
-                        <button type="button" class="btn-search" title="검색">돋보기</button>
-                        <!-- <button type="button" class="btn-close" title="닫기">닫기</button> -->
-                    </div>
-                </div>
-            </header>
-            <div class="contents">
-                <div class="section">
-                    <div class="inner">
-                        <h1 class="title">폼요소</h1>
-                        <div class="form-box mt-20">
-                            <h2 class="sub-title">Default</h2>
-                            <form action="">
-                                <fieldset>
-                                    <dl>
-                                        <dt><label for="f1">default</label></dt>
-                                        <dd>
-                                            <div class="input-box">
-                                                <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                                <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                    <dl>
-                                        <dt><label for="f2">focus</label></dt>
-                                        <dd>
-                                            <div class="input-box">
-                                                <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                                <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                    <dl>
-                                        <dt><label for="f3">filled</label></dt>
-                                        <dd>
-                                            <div class="input-box">
-                                                <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                                <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                    <dl>
-                                        <dt><label for="f4">error</label></dt>
-                                        <dd>
-                                            <div class="input-box error">
-                                                <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                                <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                                <span class="validate-txt is-error">전화번호를 입력하세요.</span>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                    <dl>
-                                        <dt><label for="f5">disable</label></dt>
-                                        <dd>
-                                            <div class="input-box">
-                                                <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" value="전화번호 또는 이메일" disabled />
-                                                <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                    <dl>
-                                        <dt><label for="f5">password</label></dt>
-                                        <dd>
-                                            <div class="input-box inp-pw">
-                                                <input type="password" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                                <button type="button" class="btn-inp-pw"><span class="blind">보이기</span></button>
-                                                <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="inner">
-                        <div class="form-box">
-                            <h2 class="sub-title">Ico</h2>
-                            <dl>
-                                <dt><label for="f1">default</label></dt>
-                                <dd>
-                                    <div class="input-box ico">
-                                        <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                        <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                        <button></button>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dt><label for="f2">focus</label></dt>
-                                <dd>
-                                    <div class="input-box">
-                                        <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                        <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dt><label for="f3">filled</label></dt>
-                                <dd>
-                                    <div class="input-box">
-                                        <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                        <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dt><label for="f4">error</label></dt>
-                                <dd>
-                                    <div class="input-box error">
-                                        <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                        <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dt><label for="f5">disable</label></dt>
-                                <dd>
-                                    <div class="input-box">
-                                        <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" value="전화번호 또는 이메일" disabled />
-                                        <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                    </div>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="inner">
-                        <div class="form-box">
-                            <h2 class="sub-title">Small</h2>
-                            <dl>
-                                <dt><label for="f1">default</label></dt>
-                                <dd>
-                                    <div class="input-box">
-                                        <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                        <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dt><label for="f2">focus</label></dt>
-                                <dd>
-                                    <div class="input-box">
-                                        <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                        <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dt><label for="f3">filled</label></dt>
-                                <dd>
-                                    <div class="input-box">
-                                        <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                        <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dt><label for="f4">error</label></dt>
-                                <dd>
-                                    <div class="input-box error">
-                                        <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" />
-                                        <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dt><label for="f5">disable</label></dt>
-                                <dd>
-                                    <div class="input-box">
-                                        <input type="text" placeholder="전화번호 또는 이메일" title="내용입력" value="전화번호 또는 이메일" disabled />
-                                        <a href="#none" class="btn-inp-del" role="button" aria-label="입력내용삭제"></a>
-                                    </div>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="inner">
-                        <div class="text-box">
-                            <textarea name="" id="" cols="30" rows="10" class="textarea" placeholder="텍스트를 입력하세요"></textarea>
-                            <span class="byte">0 / 100</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="inner">
-                        <div class="select-box">
-                            <select title="옵션선택">
-                                <option value="">최신순</option>
-                                <option value="1">옵션1</option>
-                                <option value="2">옵션2</option>
-                                <option value="3">옵션3</option>
-                                <option value="4">옵션4</option>
-                                <option value="5">옵션5</option>
-                            </select>
-                        </div>
-                        <div class="select-box mt-4">
-                            <select title="옵션선택" class="select-pop">
-                                <option value="">팝업으로 선택</option>
-                                <option value="1">옵션1</option>
-                                <option value="2">옵션2</option>
-                                <option value="3">옵션3</option>
-                                <option value="4">옵션4옵션4옵션4옵션4옵션4</option>
-                                <option value="5">옵션5옵션5옵션5옵션5</option>
-                                <option value="6">옵션5옵션5옵션5옵션5</option>
-                                <option value="7">옵션5옵션5옵션5옵션5</option>
-                                <option value="8">옵션5옵션5옵션5옵션5</option>
-                                <option value="9">옵션5옵션5옵션5옵션5</option>
-                                <option value="10">옵션5옵션5옵션5옵션5</option>
-                            </select>
-                        </div>
-                        <div class="select-box mt-20">
-                            <div class="select-sort"></div>
-                            <select title="옵션선택">
-                                <option value="">최신순</option>
-                                <option value="1">옵션1</option>
-                                <option value="2">옵션2</option>
-                                <option value="3">옵션3</option>
-                                <option value="4">옵션4</option>
-                                <option value="5">옵션5</option>
-                            </select>
-                        </div>
-                        <div class="select-box mt-4">
-                            <div class="select-sort"></div>
-                            <select title="옵션선택" class="select-pop">
-                                <option value="">팝업으로 선택</option>
-                                <option value="1">옵션1</option>
-                                <option value="2">옵션2</option>
-                                <option value="3">옵션3</option>
-                                <option value="4">옵션4옵션4옵션4옵션4옵션4</option>
-                                <option value="5">옵션5옵션5옵션5옵션5</option>
-                                <option value="6">옵션5옵션5옵션5옵션5</option>
-                                <option value="7">옵션5옵션5옵션5옵션5</option>
-                                <option value="8">옵션5옵션5옵션5옵션5</option>
-                                <option value="9">옵션5옵션5옵션5옵션5</option>
-                                <option value="10">옵션5옵션5옵션5옵션5</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="inner">
-                        <ul>
-                            <li class="mt-8">
-                                <div class="chk-box">
-                                    <input type="checkbox" id="chk1_1" />
-                                    <label for="chk1_1">텍스트와의 간격은 8</label>
-                                </div>
-                            </li>
-                            <li class="mt-8">
-                                <div class="chk-box">
-                                    <input type="checkbox" id="chk1_2" checked />
-                                    <label for="chk1_2">텍스트와의 간격은 8</label>
-                                </div>
-                            </li>
-                            <li class="mt-8">
-                                <div class="chk-box">
-                                    <input type="checkbox" id="chk1_3" checked disabled />
-                                    <label for="chk1_3">텍스트와의 간격은 8</label>
-                                </div>
-                            </li>
-                            <li class="mt-8">
-                                <div class="chk-box">
-                                    <input type="checkbox" id="chk1_4" disabled />
-                                    <label for="chk1_4">텍스트와의 간격은 8</label>
-                                </div>
-                            </li>
-                            <li class="mt-8">
-                                <div class="chk-box toggle-cate">
-                                    <input type="checkbox" id="chk1_5" />
-                                    <label for="chk1_5">재즈</label>
-                                </div>
-                            </li>
-                            <li class="mt-8">
-                                <div class="chk-box toggle-cate">
-                                    <input type="checkbox" id="chk1_6" checked />
-                                    <label for="chk1_6">재즈</label>
-                                </div>
-                            </li>
-                            <li class="mt-8">
-                                <div class="chk-box toggle">
-                                    <input type="checkbox" id="chk1_7" />
-                                    <label for="chk1_7"></label>
-                                </div>
-                            </li>
-                            <li class="mt-8">
-                                <div class="chk-box toggle">
-                                    <input type="checkbox" id="chk1_8" checked />
-                                    <label for="chk1_8"></label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="inner">
-                        <ul>
-                            <li class="mt-8">
-                                <div class="rdo-box">
-                                    <input type="radio" id="rdo1_1" />
-                                    <label for="rdo1_1">텍스트와의 간격은 8</label>
-                                </div>
-                            </li>
-                            <li class="mt-8">
-                                <div class="rdo-box">
-                                    <input type="radio" id="rdo1_2" checked />
-                                    <label for="rdo1_2">텍스트와의 간격은 8</label>
-                                </div>
-                            </li>
-                            <li class="mt-8">
-                                <div class="rdo-box">
-                                    <input type="radio" id="rdo1_3" checked disabled />
-                                    <label for="rdo1_3">텍스트와의 간격은 8</label>
-                                </div>
-                            </li>
-                            <li class="mt-8">
-                                <div class="rdo-box">
-                                    <input type="radio" id="rdo1_4" disabled />
-                                    <label for="rdo1_4">텍스트와의 간격은 8</label>
-                                </div>
-                            </li>
-                            <li class="mt-8">
-                                <div class="rdo-box cell">
-                                    <input type="radio" id="rdo1_5" />
-                                    <label for="rdo1_5">선택항목</label>
-                                </div>
-                            </li>
-                            <li class="mt-8">
-                                <div class="rdo-box cell">
-                                    <input type="radio" id="rdo1_6" checked />
-                                    <label for="rdo1_6">선택항목</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스타일 가이드</title>
+<link rel="stylesheet" href="/res_new/css/p_common.css" />
+<style type="text/css">
+   /* 가이드 css */
+    .guideContainer{position:relative;padding:30px 20px;}
+	.guideContainer h1{margin-bottom:50px;font-size:34px;border-bottom:2px solid #000;padding-bottom:3px;}
+	.guideContainer h2 {margin-bottom:25px; font-size:26px;}	
+	code{font:inherit;overflow:auto;display:block;margin:25px 0 50px;padding:20px;border:2px solid #ccc;background:#f7f7f7}
+	pre{margin:0;padding:0;color:#111;font:inherit;font-size:15px;line-height:1.5}
 
-            <div class="fnb-wrap">
-                <div class="nav">
-                    <ul>
-                        <li class="on"><a href="#none" role="button" class="btn-home">홈</a></li>
-                        <li><a href="#none" role="button" class="btn-klip">클립</a></li>
-                        <li><a href="#none" role="button" class="btn-shot">촬영</a></li>
-                        <li><a href="#none" role="button" class="btn-music">음악</a></li>
-                        <li><a href="#none" role="button" class="btn-user">마이</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </body>
-    <script></script>
+	.guideAttribute {}
+	.guideAttribute .guide_title {padding:4px 6px; background:#E9ECEF; border-radius:4px; font-size:20px; color:#212529;}
+	.guideAttribute .guide_mark {margin-left:10px;}
+	.guideAttribute .guide_text {margin:15px 0; font-size:16px;}
+	.guideAttribute > li + li {margin-top:24px;}
+	.guideAttribute ul li {position:relative; padding-left:10px; font-size:14px;}
+	.guideAttribute ul li + li {margin-top:4px;}
+	.guideAttribute ul li:before {display:inline-block; content:'-'; position:absolute; top:0; left:0;}
+	.toast-wrap {display:flex; justify-content:center; position:fixed; left:20px; right:20px; min-height:3rem; pointer-events:none; z-index:999;}
+	.toast-wrap.top {top:50px;}
+	.toast-wrap.bottom {bottom:50px;}
+	.toastPop {display:none; width:auto;}
+	.toastPop.is-end {opacity:0; transition:opacity 0.3s ease; pointer-events:none;}
+	.toastPop .toast-box {display:flex; align-items:center; justify-content:center; position:relative; padding:16px; border-radius:14px; box-shadow:2px 2px 5px rgba(0, 0, 0, 0.8); background:#fff}
+	.toastPop .toastMsg {background:#fff;}
+</style>
+<script type="text/javascript" src="/res_new/js/jquery-1.9.1.min.js"></script>
+<script type="text/jscript" src="/res_new/js/jquery-ui.min.js"></script>
+<script type="text/jscript" src="/res_new/js/common.js"></script>
+<script type="text/javascript" src="/js/jquery.bpopup.min.js"></script>     
+</head>
+<body>
+<script type="text/javascript">
+	$(function () {
+		const $elements = $.find('*[data-html-include]');
+		if ($elements.length) {
+			ui.include(function () {
+				ui.init();
+			});
+		} else {
+			ui.init();
+		}
+	});
+	const ui = {
+		init: function() {
+
+			const _this = this;
+
+			// _this.etc();
+		},
+		popup: {
+			zIndex: 1001,
+			popCnt: 0,			
+
+			toast: function (target) {
+				var $toastPop = $(target),
+					delayTime = 3000;
+
+				$toastPop.close = null;
+
+				clearTimeout($toastPop.close);
+
+				$toastPop.fadeIn(100, function () {
+					setTimeout(function () {
+						$toastPop.addClass('is-end');
+					}, delayTime);
+				});
+
+				$toastPop.on('transitionend', function () {
+					$toastPop.addClass('is-end').hide().removeClass('is-end');
+				});
+
+				$('.btn-close', $toastPop)
+					.off('click')
+					.on('click', function () {
+						clearTimeout($toastPop.close);
+						$toastPop.addClass('is-end');
+					});
+			},
+			
+			showBpopup: {			
+					
+				open: function (button) {
+
+					console.log('open');
+
+					const popupId = $(button).data('popup-id');
+					const $popupWrap = $('#' + popupId);
+					const popupContents = $popupWrap.find('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+					const popupCloseBtn = $popupWrap.find('.layer_pop_close');
+
+					// 팝업 열었을 때 맞는지 확인
+					console.log($popupWrap);
+
+					// [접근성 포커스]
+					
+
+					// 팝업 닫기 버튼 우선 포커스
+					const enableTabindex = () => {
+						popupContents.each(() => {							
+							popupCloseBtn.attr('tabindex', '0').focus();
+						})
+					}
+
+					//팝업 안에 elm tabindex 순서 설정
+					$popupWrap.on('keydown', (e) => {
+						const lastElement = popupContents[popupContents.length - 1];
+						const firstElement = popupContents[0];
+
+						if (e.key === 'Tab') {
+							if (e.shiftKey) {								
+								if (e.target === firstElement) {
+									e.preventDefault();
+									lastElement.focus();
+								}
+							} else {								
+								if (e.target === lastElement) {
+									e.preventDefault();
+									firstElement.focus();
+								}
+							}
+						}
+					});
+
+					// bpopup 오픈 할 때, 
+					$popupWrap.bPopup({
+						onOpen: () => {
+							$("html").css("overflow", "hidden");
+
+							$(button).attr('aria-expanded', 'true');							
+
+							setTimeout(() => enableTabindex(), 100); // 지연 설정
+						},
+						onClose: () => {
+
+							$('button[data-popup-id="' + popupId + '"]').focus();
+
+						}
+					});
+					
+					// 닫기 불러오기
+					ui.popup.showBpopup.close();
+				},
+				close: function () {
+
+					$('.layer_pop_close, .pop_x, .b-modal').off('click').on('click', function (e) {
+						e.preventDefault();
+
+						console.log('close');
+
+						var _this = $(this);
+						const popupId = _this.closest('.popup_wrap').attr('id');
+						const $popupWrap = $('#' + popupId).bPopup();
+						const $button = $('button[data-popup-id="' + popupId + '"]');
+
+						$("html, body").removeAttr("style");
+
+						// 닫기버튼 속성 삭제 및 포커스 되돌리기
+						_this.removeAttr('tabindex');
+						$button.attr('aria-expanded', 'false').focus();
+						
+						// 닫기 실행
+						$popupWrap.close();
+					});
+
+					
+				},
+				
+				callback: function(){
+					console.log('Callback executed')
+				}
+			},
+		},		
+	};
+	
+</script>
+
+<div class="guideContainer">      
+  	<h1>디자인 팝업 가이드</h1>  	
+  	<h2>popup - pc</h2>
+	  
+	<button type="button" data-popup-id="bpopup1" aria-haspopup="true" aria-expanded="false" onclick="ui.popup.showBpopup.open(this)" class="btnST btnS other" title="새창 열림">팝업 버튼1</button>
+	<button type="button" data-popup-id="bpopup2" aria-haspopup="true" aria-expanded="false" onclick="ui.popup.showBpopup.open(this)" class="btnST btnS other" title="새창 열림">팝업 버튼2</button>
+	<button type="button" aria-haspopup="true" aria-expanded="false" onclick="ui.popup.toast('#toastPop')" class="btnST btnS other" title="토스트 팝업">토스트 팝업</button>
+	<button type="button" aria-haspopup="true" aria-expanded="false" onclick="ui.popup.toast('#toastPop2')" class="btnST btnS other" title="토스트 팝업">토스트 팝업</button>
+	
+	<div id="bpopup1" class="popup_wrap" role="dialog" aria-labelledby="popupHeading" aria-modal="true" tabindex="0" style="display:none; width:500px; height:500px; background:#fff; border:1px solid #ddd;">
+		<div class="pop_con_box">
+			<button type="button" class="pop_x">x</button>
+			<h4 class="pop_tit">This is bPopup 1!</h4>
+
+			<div class="pop_con">
+				<p class="pop_txt1">
+					<input type="text">
+					<input type="radio">
+					<input type="checkbox">
+					<input type="email">
+				</p>
+					
+				<div class="common_btn_box">
+					<button type="button" class="common_btn layer_pop_close">닫기</button>
+				</div>
+			</div><!-- //pop_con -->
+		</div>
+	</div>
+
+	<div id="bpopup2" class="popup_wrap" role="dialog" aria-labelledby="popupHeading" aria-modal="true" tabindex="-1" style="display:none; width:500px; height:500px; background:#fff; border:1px solid #ddd;">
+		<div class="pop_con_box">
+			<button type="button" class="pop_x">x</button>
+			<h4 class="pop_tit">This is bPopup 2!</h4>
+
+			<div class="pop_con">
+				<p class="pop_txt1">
+					<input type="text">
+					<input type="radio">
+					<input type="checkbox">
+					<input type="email">
+				</p>
+					
+				<div class="common_btn_box">
+					<button type="button" class="common_btn layer_pop_close">닫기</button>
+				</div>
+			</div><!-- //pop_con -->
+		</div>
+	</div>
+	<div class="toast-wrap top">
+		<article class="toastPop" id="toastPop" role="dialog">
+			<div class="toast-box">
+				<p class="toastMsg">토스트1</p>
+				<button type="button" class="btn-close">닫기</button>
+			</div>
+		</article>
+	</div>
+	<div class="toast-wrap bottom">
+		<article class="toastPop" id="toastPop2" role="dialog">
+			<div class="toast-box">
+				<p class="toastMsg">토스트2</p>
+				<button type="button" class="btn-close">닫기</button>
+			</div>
+		</article>
+	</div>
+	
+	<code>
+<pre>
+<strong style="font-size:26px">&lt;code&gt;</strong>
+
+&lt;button type="button" data-popup-id="bpopup1" aria-haspopup="true" aria-expanded="false" onclick="ui.popup.showBpopup.open(this)" class="btnST btnS other" title="새창 열림"&gt;버튼&lt;/button&gt;
+&lt;div id="bpopup1" class="popup_wrap" role="dialog" aria-labelledby="popupHeading" aria-modal="true" tabindex="0"&gt;
+	&lt;div class="pop_con_box"&gt;
+		&lt;button type="button" class="pop_x"&gt;x&lt;/button&gt;
+		&lt;h4 class="pop_tit"&gt;This is bPopup 2!&lt;/h4&gt;
+		&lt;div class="pop_con"&gt;
+			&lt;p class="pop_txt1"&gt;
+				&lt;input type="text"&gt;
+				&lt;input type="radio"&gt;
+				&lt;input type="checkbox"&gt;
+				&lt;input type="email"&gt;
+			&lt;/p&gt;
+			&lt;div class="common_btn_box"&gt;
+				&lt;button type="button" class="common_btn layer_pop_close"&gt;닫기&lt;/button&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div>
+&lt;/div&gt;
+</pre>
+	</code>	
+	<code>
+		<ul class="guideAttribute">
+			<li>
+				<strong class="guide_title">aria-haspopup<mark class="guide_mark"> === true ? 하위 항목O : 하위 항목X</mark></strong>
+				<p class="guide_text">요소가 팝업이나 메뉴와 같은 하위 항목을 가지고 있음을 나타내는 속성</p>
+				<ul>
+					<li>값 true는 해당 요소가 하위 팝업이나 메뉴를 가지고 있다는 것을 나타낸다.</li>
+					<li>값 false는 해당 요소가 하위 팝업이나 메뉴를 가지고 있지 않음을 나타낸다.</li>
+				</ul>
+			</li>
+			<li>
+				<strong class="guide_title">aria-expanded<mark class="guide_mark"> === false ? 특정 요소 축소 상태 : 특정 요소 확장 상태</mark></strong>
+				<p class="guide_text">특정 요소가 접혀 있는지(축소 상태) 또는 펼쳐져 있는지(확장 상태)를 나타내는 속성</p>
+				<ul>
+					<li>값 true는 해당 요소가 펼쳐져 있음을 나타낸다.</li>
+					<li>값 false는 해당 요소가 접혀 있음을 나타낸다.</li>
+				</ul>
+			</li>
+			<li>
+				<strong class="guide_title">aria-modal<mark class="guide_mark"> === true ? 모달 창O : 모달 창X</mark></strong>
+				<p class="guide_text">특정 요소가 모달 대화 상자(모달 창)임을 나타내는 속성</p>
+				<ul>
+					<li>값 true는 해당 요소가 모달 창임을 나타낸다.</li>
+					<li>값 false는 해당 요소가 모달 창이 아님을 나타낸다.</li>
+				</ul>
+			</li>
+		</ul>
+	</code>
+</div>
+</body>
 </html>
